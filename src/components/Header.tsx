@@ -20,9 +20,13 @@ export default function Header() {
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "dark") {
+        // Default to dark mode if no theme is saved or if saved as dark
+        if (!savedTheme || savedTheme === "dark") {
             setIsDark(true);
             document.documentElement.classList.add("dark");
+        } else {
+            setIsDark(false);
+            document.documentElement.classList.remove("dark");
         }
 
         const handleScroll = () => {

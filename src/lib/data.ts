@@ -2,18 +2,18 @@
 
 export const personalInfo = {
   name: "Ali Asghar",
-  title: "Software Developer | Data Analyst | Web3 Builder",
-  summary: "IT professional with expertise in data analysis, blockchain development, and building production-ready web applications. Passionate about solving complex problems and creating impactful solutions.",
+  title: "Full Stack Developer | Data Analyst | Web3 Enthusiast",
+  summary: "I build high-performance web applications and decentralized solutions. With a deep focus on Data Analysis and Blockchain technology, I turn complex problems into elegant, user-centric digital experiences.",
   email: "aliasghar789078906@gmail.com",
   phone: "+92 3177121741",
   location: "Hyderabad, Pakistan",
 };
 
-export const aboutMe = `I'm an IT graduate with a strong foundation in data analysis, database management, and network administration. Over the years, I've expanded my expertise into blockchain technology and Web3 development, building several production applications on platforms like Farcaster and Stacks.
+export const aboutMe = `I am a passionate technologist with a unique blend of skills in Data Analysis, Network Administration, and Full Stack Web Development. My journey started with a strong foundation in IT, but my curiosity led me to the cutting edge of Web3 and Blockchain.
 
-I'm a dedicated and detail-oriented professional who thrives on solving complex technical challenges. Whether it's analyzing data patterns, deploying smart contracts, or crafting intuitive user interfaces, I bring the same level of commitment and precision to every project.
+I specialize in building production-ready applications using Next.js and React, while also diving deep into smart contract development on Stacks and Farcaster. I don't just write code; I craft solutions that are efficient, scalable, and visually stunning.
 
-I'm currently open to opportunities where I can contribute my technical skills and continue growing as a developer.`;
+When I'm not coding, I'm analyzing data trends or exploring the latest in decentralized tech. I'm always ready for a challenge—let's build something amazing together.`;
 
 export const skills = {
   "Services": [

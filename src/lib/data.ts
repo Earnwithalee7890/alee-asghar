@@ -153,6 +153,7 @@ export const socialLinks = {
   github: "https://github.com/Earnwithalee7890",
   farcaster: "https://farcaster.xyz/aleekhoso",
   twitter: "https://x.com/aleeasghar78",
+  linkedin: "https://linkedin.com/in/aliasghar",
   discord: "aleeasghar67",
   email: "aliasghar789078906@gmail.com",
 };

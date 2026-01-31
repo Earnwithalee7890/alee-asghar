@@ -49,21 +49,12 @@ export default function Footer() {
                             Quick Links
                         </h4>
                         <nav className="flex flex-col gap-3">
-                            {[
-                                { name: 'About', href: '#about' },
-                                { name: 'Projects', href: '#projects' },
-                                { name: 'Events', href: '#events' },
-                                { name: 'Skills', href: '#skills' },
-                                { name: 'Experience', href: '#experience' },
-                            ].map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-muted-foreground hover:text-accent transition-colors text-sm"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
+                            <Link
+                                href="#about"
+                                className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                            >
+                                About
+                            </Link>
                         </nav>
                     </div>
 
@@ -132,7 +123,7 @@ export default function Footer() {
                             </span>
                         </Link>
                         <Link
-                            href="https://linkedin.com"
+                            href={socialLinks.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative p-3 rounded-lg bg-muted/50 border border-border hover:border-accent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:text-blue-600"

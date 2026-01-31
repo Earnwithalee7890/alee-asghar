@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Heart, Github, Twitter, Linkedin, Mail, Phone, MapPin, ArrowUp, Code2, Coffee } from "lucide-react";
+import { Heart, Github, Twitter, Linkedin, Mail, MapPin, ArrowUp, Code2, Coffee } from "lucide-react";
 import { socialLinks, personalInfo } from "@/lib/data";
 
 // Farcaster Icon
@@ -52,6 +52,7 @@ export default function Footer() {
                             {[
                                 { name: 'About', href: '#about' },
                                 { name: 'Projects', href: '#projects' },
+                                { name: 'Events', href: '#events' },
                                 { name: 'Skills', href: '#skills' },
                                 { name: 'Experience', href: '#experience' },
                             ].map((link) => (
@@ -78,13 +79,6 @@ export default function Footer() {
                             >
                                 <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
                                 <span className="truncate max-w-[200px]">{personalInfo.email}</span>
-                            </a>
-                            <a
-                                href={`tel:${personalInfo.phone}`}
-                                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors group"
-                            >
-                                <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                                {personalInfo.phone}
                             </a>
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <MapPin className="w-4 h-4 text-accent" />

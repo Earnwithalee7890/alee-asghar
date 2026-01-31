@@ -68,7 +68,7 @@ export default function Hero() {
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 fade-in w-full border-t border-border pt-8" style={{ animationDelay: '0.6s' }}>
                             {/* Stats */}
                             <div className="flex items-center gap-4">
-                                <span className="text-4xl font-bold text-foreground">3+</span>
+                                <span className="text-4xl font-bold text-foreground">4+</span>
                                 <div className="flex flex-col">
                                     <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Years of</span>
                                     <span className="text-sm font-bold text-accent">Excellence</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Trophy, ExternalLink, Award, TrendingUp, Calendar, Gift, ArrowRight } from "lucide-react";
+import { Trophy, ExternalLink, Award, TrendingUp, Calendar, Gift, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 // Event data with correct talent.app links
@@ -76,134 +76,99 @@ export default function BuilderEvents() {
         .reduce((sum, e) => sum + parseFloat(e.reward.replace(" STX", "")), 0);
 
     return (
-        <section id="events" className="relative overflow-hidden scroll-mt-20 bg-gradient-to-b from-background via-muted/5 to-background">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-3xl pointer-events-none animate-pulse-soft" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none animate-pulse-soft" style={{ animationDelay: '1s' }} />
-
+        <section id="events" className="relative overflow-hidden scroll-mt-20">
             <div className="max-w-6xl mx-auto relative z-10">
                 {/* Section Header */}
-                <div className="flex flex-col items-center justify-center text-center mb-16">
+                <div className="flex flex-col items-center justify-center text-center mb-12">
                     <span className="section-badge">Web3 Journey</span>
                     <h2 className="section-title">Web3 Builder Events</h2>
-                    <p className="text-muted-foreground max-w-2xl mt-4 text-lg">
-                        Participating in blockchain builder challenges and earning recognition for impactful contributions to the Web3 ecosystem.
+                    <p className="text-muted-foreground max-w-2xl mt-4">
+                        Competing in blockchain builder challenges and earning recognition across Stacks and Base ecosystems
                     </p>
                 </div>
 
-                {/* Stats Overview */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
-                    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
-                        <Trophy className="w-8 h-8 mb-3 text-purple-500 group-hover:scale-110 transition-transform" />
-                        <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">6</div>
-                        <div className="text-sm text-muted-foreground">Total Events</div>
+                {/* Stats Overview - Compact */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                    <div className="modern-card text-center p-4">
+                        <div className="text-3xl font-bold text-foreground mb-1">6</div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wider">Events</div>
                     </div>
-                    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-green-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
-                        <Award className="w-8 h-8 mb-3 text-green-500 group-hover:scale-110 transition-transform" />
-                        <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">4</div>
-                        <div className="text-sm text-muted-foreground">Completed</div>
+                    <div className="modern-card text-center p-4">
+                        <div className="text-3xl font-bold text-green-500 mb-1">4</div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wider">Completed</div>
                     </div>
-                    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 hover:border-orange/50 transition-all duration-300 hover:shadow-lg hover:shadow-orange/10">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-accent/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
-                        <TrendingUp className="w-8 h-8 mb-3 text-accent group-hover:scale-110 transition-transform" />
-                        <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">#18</div>
-                        <div className="text-sm text-muted-foreground">Best Rank</div>
+                    <div className="modern-card text-center p-4">
+                        <div className="text-3xl font-bold bg-gradient-to-r from-accent to-orange bg-clip-text text-transparent mb-1">#18</div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wider">Best Rank</div>
                     </div>
-                    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 hover:border-yellow-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/10">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
-                        <Gift className="w-8 h-8 mb-3 text-yellow-500 group-hover:scale-110 transition-transform" />
-                        <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{totalStxRewards.toFixed(0)}</div>
-                        <div className="text-sm text-muted-foreground">STX Earned</div>
+                    <div className="modern-card text-center p-4">
+                        <div className="text-3xl font-bold text-yellow-500 mb-1">{totalStxRewards.toFixed(0)}</div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wider">STX Earned</div>
                     </div>
                 </div>
 
                 {/* Stacks Events */}
-                <div className="mb-16">
-                    <div className="flex items-center gap-3 mb-8">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center border border-purple-500/20">
-                            <svg className="w-7 h-7 text-purple-500" viewBox="0 0 40 40" fill="currentColor">
-                                <path d="M20 0L0 10v20l20 10 20-10V10L20 0zm0 5l15 7.5v15L20 35l-15-7.5v-15L20 5z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 className="text-2xl font-bold text-foreground">Stacks Builder Challenges</h3>
-                            <p className="text-sm text-muted-foreground">Bitcoin L2 smart contract development</p>
-                        </div>
+                <div className="mb-12">
+                    <div className="flex items-center gap-2 mb-6">
+                        <svg className="w-6 h-6 text-purple-500" viewBox="0 0 40 40" fill="currentColor">
+                            <path d="M20 0L0 10v20l20 10 20-10V10L20 0zm0 5l15 7.5v15L20 35l-15-7.5v-15L20 5z" />
+                        </svg>
+                        <h3 className="text-xl font-bold text-foreground">Stacks Builder Challenges</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
                         {stacksEvents.map((event, index) => (
-                            <div key={index} className="group relative overflow-hidden rounded-xl border border-border bg-card/50 backdrop-blur-sm p-6 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5">
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-purple-500/0 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                {/* Content */}
-                                <div className="relative z-10">
-                                    {/* Header */}
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div className="flex-1">
-                                            <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-purple-500 transition-colors">
-                                                {event.name}
-                                            </h4>
-                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                <Calendar className="w-4 h-4" />
-                                                {event.period}
-                                            </div>
+                            <div key={index} className="modern-card group hover:border-purple-500/30 transition-all">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    {/* Left: Event Info */}
+                                    <div className="flex-1">
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <h4 className="font-semibold text-foreground">{event.name}</h4>
+                                            {event.status === "completed" ? (
+                                                <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
+                                                    Completed
+                                                </span>
+                                            ) : (
+                                                <span className="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-medium border border-yellow-500/20">
+                                                    Pending
+                                                </span>
+                                            )}
                                         </div>
-                                        {event.status === "completed" ? (
-                                            <span className="px-3 py-1.5 rounded-full bg-green-500/10 text-green-500 text-xs font-semibold border border-green-500/20">
-                                                ✓ Completed
-                                            </span>
-                                        ) : (
-                                            <span className="px-3 py-1.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-semibold border border-yellow-500/20 animate-pulse">
-                                                ⏳ Pending
-                                            </span>
-                                        )}
+                                        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                                            <Calendar className="w-3 h-3" />
+                                            {event.period}
+                                        </div>
+                                        <p className="text-sm text-muted-foreground">{event.challenge}</p>
                                     </div>
 
-                                    {/* Stats */}
-                                    <div className="flex items-center gap-6 mb-4">
-                                        {event.rank ? (
-                                            <div>
-                                                <div className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-                                                    #{event.rank}
+                                    {/* Right: Stats & Button */}
+                                    <div className="flex items-center gap-6">
+                                        <div className="flex items-center gap-4">
+                                            {event.rank ? (
+                                                <div className="text-center">
+                                                    <div className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">#{event.rank}</div>
+                                                    <div className="text-xs text-muted-foreground">Rank</div>
                                                 </div>
-                                                <div className="text-xs text-muted-foreground">Rank</div>
+                                            ) : (
+                                                <div className="text-center">
+                                                    <div className="text-xl font-bold text-muted-foreground/50">TBD</div>
+                                                    <div className="text-xs text-muted-foreground">Rank</div>
+                                                </div>
+                                            )}
+                                            <div className="text-center">
+                                                <div className="text-xl font-bold text-accent">{event.reward}</div>
+                                                <div className="text-xs text-muted-foreground">Reward</div>
                                             </div>
-                                        ) : (
-                                            <div>
-                                                <div className="text-2xl font-bold text-muted-foreground">TBD</div>
-                                                <div className="text-xs text-muted-foreground">Rank</div>
-                                            </div>
-                                        )}
-                                        <div>
-                                            <div className="text-2xl font-bold text-accent">{event.reward}</div>
-                                            <div className="text-xs text-muted-foreground">Reward</div>
                                         </div>
-                                        {event.totalParticipants && (
-                                            <div>
-                                                <div className="text-lg font-bold text-foreground">{event.totalParticipants}</div>
-                                                <div className="text-xs text-muted-foreground">Builders</div>
-                                            </div>
-                                        )}
+                                        <Link
+                                            href={event.eventLink}
+                                            target="_blank"
+                                            className="btn-outline flex items-center gap-1 whitespace-nowrap"
+                                        >
+                                            View
+                                            <ExternalLink className="w-3 h-3" />
+                                        </Link>
                                     </div>
-
-                                    {/* Challenge Details */}
-                                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                                        {event.challenge}
-                                    </p>
-
-                                    {/* Link Button */}
-                                    <Link
-                                        href={event.eventLink}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-500 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 text-sm font-medium group/btn"
-                                    >
-                                        View Event Details
-                                        <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -211,110 +176,84 @@ export default function BuilderEvents() {
                 </div>
 
                 {/* Base Events */}
-                <div className="mb-16">
-                    <div className="flex items-center gap-3 mb-8">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center border border-blue-500/20">
-                            <svg className="w-7 h-7 text-blue-500" viewBox="0 0 111 111" fill="none">
-                                <path d="M54.921 110.034C85.359 110.034 110.034 85.402 110.034 55.017C110.034 24.6319 85.359 0 54.921 0C26.0432 0 2.35281 22.1714 0 50.3923H72.8467V59.6416H0C2.35281 87.8625 26.0432 110.034 54.921 110.034Z" fill="currentColor" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 className="text-2xl font-bold text-foreground">Base Builder Challenges</h3>
-                            <p className="text-sm text-muted-foreground">Ethereum L2 ecosystem development</p>
-                        </div>
+                <div className="mb-12">
+                    <div className="flex items-center gap-2 mb-6">
+                        <svg className="w-6 h-6 text-blue-500" viewBox="0 0 111 111" fill="none">
+                            <path d="M54.921 110.034C85.359 110.034 110.034 85.402 110.034 55.017C110.034 24.6319 85.359 0 54.921 0C26.0432 0 2.35281 22.1714 0 50.3923H72.8467V59.6416H0C2.35281 87.8625 26.0432 110.034 54.921 110.034Z" fill="currentColor" />
+                        </svg>
+                        <h3 className="text-xl font-bold text-foreground">Base Builder Challenges</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
                         {baseEvents.map((event, index) => (
-                            <div key={index} className="group relative overflow-hidden rounded-xl border border-border bg-card/50 backdrop-blur-sm p-6 hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5">
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                {/* Content */}
-                                <div className="relative z-10">
-                                    {/* Header */}
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div className="flex-1">
-                                            <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-blue-500 transition-colors">
-                                                {event.name}
-                                            </h4>
-                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                <Calendar className="w-4 h-4" />
-                                                {event.period}
-                                            </div>
+                            <div key={index} className="modern-card group hover:border-blue-500/30 transition-all">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    {/* Left: Event Info */}
+                                    <div className="flex-1">
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <h4 className="font-semibold text-foreground">{event.name}</h4>
+                                            {event.status === "completed" ? (
+                                                <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
+                                                    Completed
+                                                </span>
+                                            ) : (
+                                                <span className="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-medium border border-yellow-500/20">
+                                                    Pending
+                                                </span>
+                                            )}
                                         </div>
-                                        {event.status === "completed" ? (
-                                            <span className="px-3 py-1.5 rounded-full bg-green-500/10 text-green-500 text-xs font-semibold border border-green-500/20">
-                                                ✓ Completed
-                                            </span>
-                                        ) : (
-                                            <span className="px-3 py-1.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-semibold border border-yellow-500/20 animate-pulse">
-                                                ⏳ Pending
-                                            </span>
-                                        )}
+                                        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                                            <Calendar className="w-3 h-3" />
+                                            {event.period}
+                                        </div>
+                                        <p className="text-sm text-muted-foreground">{event.challenge}</p>
                                     </div>
 
-                                    {/* Stats */}
-                                    <div className="flex items-center gap-6 mb-4">
-                                        {event.rank ? (
-                                            <div>
-                                                <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                                                    #{event.rank}
+                                    {/* Right: Stats & Button */}
+                                    <div className="flex items-center gap-6">
+                                        <div className="flex items-center gap-4">
+                                            {event.rank ? (
+                                                <div className="text-center">
+                                                    <div className="text-xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">#{event.rank}</div>
+                                                    <div className="text-xs text-muted-foreground">Rank</div>
                                                 </div>
-                                                <div className="text-xs text-muted-foreground">Rank</div>
+                                            ) : (
+                                                <div className="text-center">
+                                                    <div className="text-xl font-bold text-muted-foreground/50">TBD</div>
+                                                    <div className="text-xs text-muted-foreground">Rank</div>
+                                                </div>
+                                            )}
+                                            <div className="text-center">
+                                                <div className="text-xl font-bold text-accent">{event.reward}</div>
+                                                <div className="text-xs text-muted-foreground">Reward</div>
                                             </div>
-                                        ) : (
-                                            <div>
-                                                <div className="text-2xl font-bold text-muted-foreground">TBD</div>
-                                                <div className="text-xs text-muted-foreground">Rank</div>
-                                            </div>
-                                        )}
-                                        <div>
-                                            <div className="text-2xl font-bold text-accent">{event.reward}</div>
-                                            <div className="text-xs text-muted-foreground">Reward</div>
                                         </div>
-                                        {event.totalParticipants && (
-                                            <div>
-                                                <div className="text-lg font-bold text-foreground">{event.totalParticipants.toLocaleString()}</div>
-                                                <div className="text-xs text-muted-foreground">Builders</div>
-                                            </div>
-                                        )}
+                                        <Link
+                                            href={event.eventLink}
+                                            target="_blank"
+                                            className="btn-outline flex items-center gap-1 whitespace-nowrap"
+                                        >
+                                            View
+                                            <ExternalLink className="w-3 h-3" />
+                                        </Link>
                                     </div>
-
-                                    {/* Challenge Details */}
-                                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                                        {event.challenge}
-                                    </p>
-
-                                    {/* Link Button */}
-                                    <Link
-                                        href={event.eventLink}
-                                        target="_blank"
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-500 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 text-sm font-medium group/btn"
-                                    >
-                                        View Event Details
-                                        <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                                    </Link>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* CTA - View Full Profile */}
+                {/* CTA */}
                 <div className="text-center">
                     <Link
                         href="https://talent.app/aleekhoso"
                         target="_blank"
-                        className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold text-lg shadow-lg hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+                        className="btn-primary inline-flex items-center gap-2"
                     >
-                        <Trophy className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                        <Trophy className="w-5 h-5" />
                         View Full Talent Profile
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4" />
                     </Link>
-                    <p className="text-sm text-muted-foreground mt-4">
-                        See detailed stats, leaderboard rankings, and all achievements
-                    </p>
                 </div>
             </div>
         </section>

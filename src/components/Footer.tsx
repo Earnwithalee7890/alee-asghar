@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Heart, Github, Twitter, Linkedin, Mail, Phone, MapPin, ArrowUp, Code2, Coffee } from "lucide-react";
 import { socialLinks, personalInfo } from "@/lib/data";

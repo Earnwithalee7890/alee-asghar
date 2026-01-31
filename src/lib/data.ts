@@ -58,25 +58,46 @@ export const skills = {
 
 export const projects = [
   {
+    title: "StacksRank",
+    description: "The ultimate reputation & DeFi platform for Stacks Builders. Track rankings, swap tokens, and manage vaults on Bitcoin L2 with real-time data indexing and next-gen wallet integration.",
+    techStack: ["Vanilla JS", "Clarity 3.0", "Stacks", "Leather Wallet", "Hiro API"],
+    liveUrl: "https://stacksrank.vercel.app/",
+    githubUrl: "https://github.com/Earnwithalee7890/StacksRank",
+  },
+  {
+    title: "PostUP",
+    description: "On-chain quest engine with Farcaster Frames integration. Brands launch campaigns while users earn rewards through social engagement, verified via Merkle proofs and ERC-1155 NFTs.",
+    techStack: ["Next.js", "Farcaster", "Solidity", "ERC-1155", "TypeScript"],
+    liveUrl: "https://post-up.vercel.app/",
+    githubUrl: "https://github.com/Earnwithalee7890/PostUP",
+  },
+  {
+    title: "StackCred",
+    description: "Decentralized credential platform using SIP-009 NFT standard. Mint immutable credentials for educational achievements with W3C-compatible verifiable schema, secured on Bitcoin via Stacks.",
+    techStack: ["Next.js", "Clarity", "SIP-009", "Tailwind CSS", "Stacks"],
+    liveUrl: "https://stack-cred.vercel.app/",
+    githubUrl: "https://github.com/Earnwithalee7890/StackCred",
+  },
+  {
+    title: "TrueScore",
+    description: "A beautiful Farcaster Mini App displaying real Neynar reputation scores, AI post generation, and daily check-ins on Base. Features dynamic OG images and social analytics.",
+    techStack: ["Next.js 14", "TypeScript", "Solidity", "Base", "Neynar API", "Farcaster SDK"],
+    liveUrl: "https://v0-task-to-cash-seven.vercel.app/",
+    githubUrl: "https://github.com/Earnwithalee7890/True-Score-Mini-app-Crypto",
+  },
+  {
     title: "Bubble Shoot Game",
     description: "A fun and engaging bubble shooter game built as a Farcaster Mini App. Features dynamic backgrounds, leaderboards, and daily check-ins.",
     techStack: ["Next.js", "TypeScript", "Farcaster SDK", "Vercel"],
     liveUrl: "https://bubble-shoot-1.vercel.app/",
-    githubUrl: "https://github.com/Earnwithalee7890",
-  },
-  {
-    title: "Task to Cash",
-    description: "A Web3 task management application that rewards users for completing tasks. Built with modern web technologies and blockchain integration.",
-    techStack: ["Next.js", "Web3", "TypeScript", "Tailwind CSS"],
-    liveUrl: "https://v0-task-to-cash-seven.vercel.app/",
-    githubUrl: "https://github.com/Earnwithalee7890",
+    githubUrl: "https://github.com/Earnwithalee7890/bubble-shoot-game",
   },
   {
     title: "STX Daily Check-in",
     description: "A daily check-in application on the Stacks blockchain. Users can track their activity, deploy contracts, and engage with the community.",
     techStack: ["Next.js", "Stacks", "Clarity", "TypeScript"],
     liveUrl: "https://stx-daily-check-in.vercel.app/",
-    githubUrl: "https://github.com/Earnwithalee7890",
+    githubUrl: "https://github.com/Earnwithalee7890/stx-daily-check-in-hiro",
   },
   {
     title: "Fake Face Detection",

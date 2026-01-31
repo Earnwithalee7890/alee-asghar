@@ -108,8 +108,8 @@ export default function BuilderEvents() {
                 </div>
 
                 {/* Stacks Events */}
-                <div className="mb-12">
-                    <div className="flex items-center gap-2 mb-8 mt-8">
+                <div className="mb-16">
+                    <div className="flex items-center gap-2 mb-12 mt-16">
                         <svg className="w-6 h-6 text-purple-500" viewBox="0 0 40 40" fill="currentColor">
                             <path d="M20 0L0 10v20l20 10 20-10V10L20 0zm0 5l15 7.5v15L20 35l-15-7.5v-15L20 5z" />
                         </svg>
@@ -176,8 +176,8 @@ export default function BuilderEvents() {
                 </div>
 
                 {/* Base Events */}
-                <div className="mb-12">
-                    <div className="flex items-center gap-2 mb-8 mt-8">
+                <div className="mb-16">
+                    <div className="flex items-center gap-2 mb-12 mt-16">
                         <svg className="w-6 h-6 text-blue-500" viewBox="0 0 111 111" fill="none">
                             <path d="M54.921 110.034C85.359 110.034 110.034 85.402 110.034 55.017C110.034 24.6319 85.359 0 54.921 0C26.0432 0 2.35281 22.1714 0 50.3923H72.8467V59.6416H0C2.35281 87.8625 26.0432 110.034 54.921 110.034Z" fill="currentColor" />
                         </svg>

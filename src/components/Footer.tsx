@@ -99,31 +99,54 @@ export default function Footer() {
                 <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
                     {/* Social Links */}
                     <div className="flex items-center gap-3">
-                        {[
-                            { href: socialLinks.github, icon: Github, label: 'GitHub', color: 'hover:text-gray-400' },
-                            { href: socialLinks.twitter, icon: Twitter, label: 'Twitter', color: 'hover:text-blue-400' },
-                            { href: socialLinks.farcaster, icon: FarcasterIcon, label: 'Farcaster', color: 'hover:text-purple-400' },
-                            { href: 'https://linkedin.com', icon: Linkedin, label: 'LinkedIn', color: 'hover:text-blue-600' },
-                        ].map((social) => (
-                            <Link
-                                key={social.label}
-                                href={social.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`group relative p-3 rounded-lg bg-muted/50 border border-border hover:border-accent transition-all duration-300 hover:scale-110 hover:shadow-lg ${social.color}`}
-                                aria-label={social.label}
-                            >
-                                {typeof social.icon === 'function' ? (
-                                    <social.icon />
-                                ) : (
-                                    <social.icon className="w-5 h-5" />
-                                )}
-                                {/* Tooltip */}
-                                <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-foreground text-background text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                                    {social.label}
-                                </span>
-                            </Link>
-                        ))}
+                        <Link
+                            href={socialLinks.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative p-3 rounded-lg bg-muted/50 border border-border hover:border-accent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:text-gray-400"
+                            aria-label="GitHub"
+                        >
+                            <Github className="w-5 h-5" />
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-foreground text-background text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                                GitHub
+                            </span>
+                        </Link>
+                        <Link
+                            href={socialLinks.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative p-3 rounded-lg bg-muted/50 border border-border hover:border-accent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:text-blue-400"
+                            aria-label="Twitter"
+                        >
+                            <Twitter className="w-5 h-5" />
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-foreground text-background text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                                Twitter
+                            </span>
+                        </Link>
+                        <Link
+                            href={socialLinks.farcaster}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative p-3 rounded-lg bg-muted/50 border border-border hover:border-accent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:text-purple-400"
+                            aria-label="Farcaster"
+                        >
+                            <FarcasterIcon />
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-foreground text-background text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                                Farcaster
+                            </span>
+                        </Link>
+                        <Link
+                            href="https://linkedin.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative p-3 rounded-lg bg-muted/50 border border-border hover:border-accent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:text-blue-600"
+                            aria-label="LinkedIn"
+                        >
+                            <Linkedin className="w-5 h-5" />
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-foreground text-background text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                                LinkedIn
+                            </span>
+                        </Link>
                     </div>
 
                     {/* Copyright */}

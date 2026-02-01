@@ -18,6 +18,7 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isDark, setIsDark] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -32,6 +33,14 @@ export default function Header() {
 
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
+
+            // Calculate scroll progress
+            const totalScroll = document.documentElement.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scroll = `${totalScroll / windowHeight}`;
+            const scrollPercent = Number(scroll) * 100;
+
+            setScrollProgress(scrollPercent);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -101,6 +110,8 @@ export default function Header() {
                     </div>
                 )}
             </nav>
+            {/* Reading Progress Bar */}
+            <div className="absolute bottom-0 left-0 h-[2px] bg-accent transition-all duration-300" style={{ width: `${scrollProgress}%` }} />
         </header>
     );
 }

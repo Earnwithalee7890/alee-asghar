@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Trophy, ExternalLink, Award, TrendingUp, Calendar, Gift, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
@@ -71,6 +72,7 @@ const baseEvents = [
 ];
 
 export default function BuilderEvents() {
+    const [filter, setFilter] = useState<"all" | "completed" | "pending">("all");
     const totalStxRewards = stacksEvents
         .filter(e => e.status === "completed")
         .reduce((sum, e) => sum + parseFloat(e.reward.replace(" STX", "")), 0);
@@ -107,9 +109,25 @@ export default function BuilderEvents() {
                     </div>
                 </div>
 
+                {/* Filter Controls */}
+                <div className="flex justify-center gap-4 mb-12">
+                    {["all", "completed", "pending"].map((f) => (
+                        <button
+                            key={f}
+                            onClick={() => setFilter(f as any)}
+                            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === f
+                                ? "bg-accent text-accent-foreground shadow-lg shadow-accent/25"
+                                : "bg-background/50 text-muted-foreground hover:text-foreground hover:bg-background border border-border/50"
+                                }`}
+                        >
+                            {f.charAt(0).toUpperCase() + f.slice(1)}
+                        </button>
+                    ))}
+                </div>
+
                 {/* Stacks Events */}
                 <div className="mb-16">
-                    <div className="flex items-center gap-2 mb-12 mt-16">
+                    <div className="flex items-center gap-2 mb-12 mt-8">
                         <svg className="w-6 h-6 text-purple-500" viewBox="0 0 40 40" fill="currentColor">
                             <path d="M20 0L0 10v20l20 10 20-10V10L20 0zm0 5l15 7.5v15L20 35l-15-7.5v-15L20 5z" />
                         </svg>
@@ -117,67 +135,69 @@ export default function BuilderEvents() {
                     </div>
 
                     <div className="space-y-4">
-                        {stacksEvents.map((event, index) => (
-                            <div key={index} className="modern-card group hover:border-purple-500/30 transition-all">
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                    {/* Left: Event Info */}
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <h4 className="font-semibold text-foreground">{event.name}</h4>
-                                            {event.status === "completed" ? (
-                                                <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
-                                                    Completed
-                                                </span>
-                                            ) : (
-                                                <span className="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-medium border border-yellow-500/20">
-                                                    Pending
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
-                                            <Calendar className="w-3 h-3" />
-                                            {event.period}
-                                        </div>
-                                        <p className="text-sm text-muted-foreground">{event.challenge}</p>
-                                    </div>
-
-                                    {/* Right: Stats & Button */}
-                                    <div className="flex items-center gap-6">
-                                        <div className="flex items-center gap-4">
-                                            {event.rank ? (
-                                                <div className="text-center">
-                                                    <div className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">#{event.rank}</div>
-                                                    <div className="text-xs text-muted-foreground">Rank</div>
-                                                </div>
-                                            ) : (
-                                                <div className="text-center">
-                                                    <div className="text-xl font-bold text-muted-foreground/50">TBD</div>
-                                                    <div className="text-xs text-muted-foreground">Rank</div>
-                                                </div>
-                                            )}
-                                            <div className="text-center">
-                                                <div className="text-xl font-bold text-accent">{event.reward}</div>
-                                                <div className="text-xs text-muted-foreground">Reward</div>
+                        {stacksEvents
+                            .filter(e => filter === "all" || e.status === filter)
+                            .map((event, index) => (
+                                <div key={index} className="modern-card group hover:border-purple-500/30 transition-all">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                        {/* Left: Event Info */}
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <h4 className="font-semibold text-foreground">{event.name}</h4>
+                                                {event.status === "completed" ? (
+                                                    <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
+                                                        Completed
+                                                    </span>
+                                                ) : (
+                                                    <span className="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-medium border border-yellow-500/20">
+                                                        Pending
+                                                    </span>
+                                                )}
                                             </div>
+                                            <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                                                <Calendar className="w-3 h-3" />
+                                                {event.period}
+                                            </div>
+                                            <p className="text-sm text-muted-foreground">{event.challenge}</p>
                                         </div>
-                                        <Link
-                                            href={event.eventLink}
-                                            target="_blank"
-                                            className="btn-outline flex items-center gap-1 whitespace-nowrap"
-                                        >
-                                            View
-                                            <ExternalLink className="w-3 h-3" />
-                                        </Link>
+
+                                        {/* Right: Stats & Button */}
+                                        <div className="flex items-center gap-6">
+                                            <div className="flex items-center gap-4">
+                                                {event.rank ? (
+                                                    <div className="text-center">
+                                                        <div className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">#{event.rank}</div>
+                                                        <div className="text-xs text-muted-foreground">Rank</div>
+                                                    </div>
+                                                ) : (
+                                                    <div className="text-center">
+                                                        <div className="text-xl font-bold text-muted-foreground/50">TBD</div>
+                                                        <div className="text-xs text-muted-foreground">Rank</div>
+                                                    </div>
+                                                )}
+                                                <div className="text-center">
+                                                    <div className="text-xl font-bold text-accent">{event.reward}</div>
+                                                    <div className="text-xs text-muted-foreground">Reward</div>
+                                                </div>
+                                            </div>
+                                            <Link
+                                                href={event.eventLink}
+                                                target="_blank"
+                                                className="btn-outline flex items-center gap-1 whitespace-nowrap"
+                                            >
+                                                View
+                                                <ExternalLink className="w-3 h-3" />
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                     </div>
                 </div>
 
                 {/* Base Events */}
                 <div className="mb-16">
-                    <div className="flex items-center gap-2 mb-12 mt-16">
+                    <div className="flex items-center gap-2 mb-12 mt-8">
                         <svg className="w-6 h-6 text-blue-500" viewBox="0 0 111 111" fill="none">
                             <path d="M54.921 110.034C85.359 110.034 110.034 85.402 110.034 55.017C110.034 24.6319 85.359 0 54.921 0C26.0432 0 2.35281 22.1714 0 50.3923H72.8467V59.6416H0C2.35281 87.8625 26.0432 110.034 54.921 110.034Z" fill="currentColor" />
                         </svg>
@@ -185,61 +205,63 @@ export default function BuilderEvents() {
                     </div>
 
                     <div className="space-y-4">
-                        {baseEvents.map((event, index) => (
-                            <div key={index} className="modern-card group hover:border-blue-500/30 transition-all">
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                    {/* Left: Event Info */}
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <h4 className="font-semibold text-foreground">{event.name}</h4>
-                                            {event.status === "completed" ? (
-                                                <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
-                                                    Completed
-                                                </span>
-                                            ) : (
-                                                <span className="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-medium border border-yellow-500/20">
-                                                    Pending
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
-                                            <Calendar className="w-3 h-3" />
-                                            {event.period}
-                                        </div>
-                                        <p className="text-sm text-muted-foreground">{event.challenge}</p>
-                                    </div>
-
-                                    {/* Right: Stats & Button */}
-                                    <div className="flex items-center gap-6">
-                                        <div className="flex items-center gap-4">
-                                            {event.rank ? (
-                                                <div className="text-center">
-                                                    <div className="text-xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">#{event.rank}</div>
-                                                    <div className="text-xs text-muted-foreground">Rank</div>
-                                                </div>
-                                            ) : (
-                                                <div className="text-center">
-                                                    <div className="text-xl font-bold text-muted-foreground/50">TBD</div>
-                                                    <div className="text-xs text-muted-foreground">Rank</div>
-                                                </div>
-                                            )}
-                                            <div className="text-center">
-                                                <div className="text-xl font-bold text-accent">{event.reward}</div>
-                                                <div className="text-xs text-muted-foreground">Reward</div>
+                        {baseEvents
+                            .filter(e => filter === "all" || e.status === filter)
+                            .map((event, index) => (
+                                <div key={index} className="modern-card group hover:border-blue-500/30 transition-all">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                        {/* Left: Event Info */}
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <h4 className="font-semibold text-foreground">{event.name}</h4>
+                                                {event.status === "completed" ? (
+                                                    <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium border border-green-500/20">
+                                                        Completed
+                                                    </span>
+                                                ) : (
+                                                    <span className="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-medium border border-yellow-500/20">
+                                                        Pending
+                                                    </span>
+                                                )}
                                             </div>
+                                            <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                                                <Calendar className="w-3 h-3" />
+                                                {event.period}
+                                            </div>
+                                            <p className="text-sm text-muted-foreground">{event.challenge}</p>
                                         </div>
-                                        <Link
-                                            href={event.eventLink}
-                                            target="_blank"
-                                            className="btn-outline flex items-center gap-1 whitespace-nowrap"
-                                        >
-                                            View
-                                            <ExternalLink className="w-3 h-3" />
-                                        </Link>
+
+                                        {/* Right: Stats & Button */}
+                                        <div className="flex items-center gap-6">
+                                            <div className="flex items-center gap-4">
+                                                {event.rank ? (
+                                                    <div className="text-center">
+                                                        <div className="text-xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">#{event.rank}</div>
+                                                        <div className="text-xs text-muted-foreground">Rank</div>
+                                                    </div>
+                                                ) : (
+                                                    <div className="text-center">
+                                                        <div className="text-xl font-bold text-muted-foreground/50">TBD</div>
+                                                        <div className="text-xs text-muted-foreground">Rank</div>
+                                                    </div>
+                                                )}
+                                                <div className="text-center">
+                                                    <div className="text-xl font-bold text-accent">{event.reward}</div>
+                                                    <div className="text-xs text-muted-foreground">Reward</div>
+                                                </div>
+                                            </div>
+                                            <Link
+                                                href={event.eventLink}
+                                                target="_blank"
+                                                className="btn-outline flex items-center gap-1 whitespace-nowrap"
+                                            >
+                                                View
+                                                <ExternalLink className="w-3 h-3" />
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                     </div>
                 </div>
 

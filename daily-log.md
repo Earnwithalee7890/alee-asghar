@@ -9,3 +9,4 @@ Just add a quick note about what you're thinking about or planning to code.
 
 
 im going to the moon 
+day 2 good night 

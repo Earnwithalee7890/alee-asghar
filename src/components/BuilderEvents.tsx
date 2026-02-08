@@ -62,9 +62,9 @@ const baseEvents = [
     {
         name: "Top Base Builders: January",
         period: "Jan 1 - Jan 31, 2026",
-        rank: null,
+        rank: 43,
         totalParticipants: 40921,
-        reward: "TBD",
+        reward: "0.02 ETH",
         status: "pending",
         challenge: "Deployed contracts, Mini App rewards, GitHub contributions",
         eventLink: "https://talent.app/~/earn/base-january",

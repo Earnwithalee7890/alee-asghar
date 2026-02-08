@@ -65,7 +65,7 @@ const baseEvents = [
         rank: 43,
         totalParticipants: 40921,
         reward: "0.02 ETH",
-        status: "pending",
+        status: "completed",
         challenge: "Deployed contracts, Mini App rewards, GitHub contributions",
         eventLink: "https://talent.app/~/earn/base-january",
     },

@@ -39,7 +39,7 @@ const stacksEvents = [
     {
         name: "Stacks Builder Rewards: January",
         period: "Jan 19 - Jan 31, 2026",
-        rank: null,
+        rank: 28,
         totalParticipants: null,
         reward: "TBD",
         status: "pending",

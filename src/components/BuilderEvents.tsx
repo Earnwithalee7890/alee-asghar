@@ -73,6 +73,11 @@ const baseEvents = [
 
 export default function BuilderEvents() {
     const [filter, setFilter] = useState<"all" | "completed" | "pending">("all");
+
+    // Calculate stats dynamically
+    const totalEvents = stacksEvents.length + baseEvents.length;
+    const completedEvents = stacksEvents.filter(e => e.status === "completed").length + baseEvents.filter(e => e.status === "completed").length;
+
     const totalStxRewards = stacksEvents
         .filter(e => e.status === "completed")
         .reduce((sum, e) => sum + parseFloat(e.reward.replace(" STX", "")), 0);
@@ -92,11 +97,11 @@ export default function BuilderEvents() {
                 {/* Stats Overview - Compact */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
                     <div className="modern-card text-center p-4">
-                        <div className="text-3xl font-bold text-foreground mb-1">6</div>
+                        <div className="text-3xl font-bold text-foreground mb-1">{totalEvents}</div>
                         <div className="text-xs text-muted-foreground uppercase tracking-wider">Events</div>
                     </div>
                     <div className="modern-card text-center p-4">
-                        <div className="text-3xl font-bold text-green-500 mb-1">4</div>
+                        <div className="text-3xl font-bold text-green-500 mb-1">{completedEvents}</div>
                         <div className="text-xs text-muted-foreground uppercase tracking-wider">Completed</div>
                     </div>
                     <div className="modern-card text-center p-4">
